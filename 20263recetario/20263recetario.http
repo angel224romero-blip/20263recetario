@@ -1,0 +1,6 @@
+@_20263recetario_HostAddress = http://localhost:5140
+
+GET {{_20263recetario_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
