@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace _20263recetario.DTOs.Identity
-{
+{//como se va a crear el json
     public class RegisterUserDto
     {
         [Required]

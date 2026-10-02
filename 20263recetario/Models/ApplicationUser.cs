@@ -8,6 +8,6 @@ namespace _20263recetario.Models
         [StringLength(60)]
         public string ? DisplayName { get; set; }
 
-        public DateTime CreatedAtUtc { get; set; }
+        public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
     }
 }

@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Scalar.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.IdentityModel.Tokens.Experimental;
+using Microsoft.AspNetCore.Authentication.JwtBearer;//Auntenticacion
+using Microsoft.EntityFrameworkCore;//orm para poder manejar los modelos para pasarlos a la bd
+using Microsoft.IdentityModel.Tokens;//indentificador
 using System.Text;
 using _20263recetario.Models;
 using _20263recetario.Context;
@@ -15,15 +14,14 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Configurar la segurudad de Identity(Microsoft)
+// Configurar la segurudad de Identity(Microsoft)  
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-//Conexion a la base de datos
+//Conexion a la base de datos ApplicationDbContext corazon mo
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //Configurar JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opciones => opciones.
@@ -39,7 +37,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ClockSkew = TimeSpan.Zero
     });
 
-//registrar Automapper
+//registrar Automapper pasar el modelo al dto lo que queremos mostrar
     builder.Services.AddAutoMapper(CFG =>
     {
     }, typeof(Program));
@@ -47,7 +45,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())//scalar para pruebas borrarlo una vez echo
 {
     app.MapOpenApi();
     app.MapScalarApiReference();

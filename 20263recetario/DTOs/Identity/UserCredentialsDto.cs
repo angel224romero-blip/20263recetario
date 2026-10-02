@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace _20263recetario.DTOs.Identity
-{
+{//lo que se requiere para logearse
     public class UserCredentialsDto
     {
         [Required]
