@@ -9,9 +9,9 @@ namespace _20263recetario.Context
         public ApplicationDbContext(DbContextOptions options ) : base( options ) { }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);//heredamos lo de identity
+            base.OnModelCreating(builder);//heredamos lo de identity para que pueda reconocer las tablas
 
-            //----------------------Category-pasandoles las propiedades alos atributos de las tablas
+            //----------------------Category-pasamos las propiedades a los atributos de las tablas
             builder.Entity<Category>(e =>
             {
                 e.Property(x => x.Id).ValueGeneratedOnAdd();

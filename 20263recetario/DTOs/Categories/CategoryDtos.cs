@@ -4,7 +4,7 @@ namespace _20263recetario.DTOs.Categories
 {
     public class CategoryDtos
     {
-        public int Id { get; set; }
+        public int Id { get; set; } //como es incrementa no es necesario mandarlo
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public DateTime CreatedAtUtc { get; set; }

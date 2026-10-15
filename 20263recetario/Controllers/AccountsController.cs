@@ -70,7 +70,7 @@ namespace _20263recetario.Controllers
             var securityToken = new JwtSecurityToken(issuer: null, audience: null, claims: claims, expires: expiracion, signingCredentials: creds);//investigar
 
             return new AuthenticationResponseDto
-            {//mandamos llamar lo que tenemos
+            {// estamos retornando los objetos de la instancia de la clase AuthenticationResponseDto
                 Token = new JwtSecurityTokenHandler().WriteToken(securityToken),
                 Expiration = expiracion,
                 UserId = usuarioId

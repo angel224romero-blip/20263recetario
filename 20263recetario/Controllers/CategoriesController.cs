@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace _20263recetario.Controllers
 { 
         [ApiController]
-        [Route("api/[controller]")]
+        [Route("api/[controller]")] //establecemos nuestra ruta, agregamos controller por buenas practicas de programacion
         public class CategoriesController : ControllerBase
         {
             private readonly ApplicationDbContext context;//inyeccion de dependecias es como poner variables para usar
@@ -21,10 +21,10 @@ namespace _20263recetario.Controllers
             }
 
             [HttpGet]
-            public async Task<ActionResult<List<CategoryDtos>>> Get()
+            public async Task<ActionResult<List<CategoryDtos>>> Get()//action result nos permite mandar una lista
             {
                 var categories = await context.Categories.ToListAsync();
-                return mapper.Map<List<CategoryDtos>>(categories);//como consulta sql
+                return mapper.Map<List<CategoryDtos>>(categories);//estamos haciendo una consulta sql
             }
 
             [HttpGet("{id:int}")]
@@ -38,6 +38,8 @@ namespace _20263recetario.Controllers
 
                 return mapper.Map<CategoryDtos>(category);//si existe hacemos un mapeo de esa categoria
             }
+
+
         [HttpPost]//endpoint para crear una categoria
         public async Task<ActionResult<CategoryDtos>> Create(CategoryCreateDtos categoryCreateDtos)
         {
